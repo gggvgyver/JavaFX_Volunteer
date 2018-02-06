@@ -35,6 +35,54 @@ public class Volunteer {
         copyImageFile();
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public byte[] getSalt() {
+        return salt;
+    }
+
+    public int getVolunteerID() {
+        return volunteerID;
+    }
+
+    public void setVolunteerID(int volunteerID) {
+        if (volunteerID >= 0)
+            this.volunteerID = volunteerID;
+        else
+            throw new IllegalArgumentException("VolunteerID must be >= 0");
+    }
+
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
     public void copyImageFile() throws IOException
     {
         //create a new Path to copy the image into a local directory
@@ -42,7 +90,7 @@ public class Volunteer {
 
         String uniqueFileName = getUniqueFileName(imageFile.getName());
 
-        Path targetPath = Paths.get("./src/images/"+uniqueFileName);
+        Path targetPath = Paths.get("./src/imgs/"+uniqueFileName);
 
         //copy the file to the new directory
         Files.copy(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
@@ -102,7 +150,7 @@ public class Volunteer {
 
     public boolean uniqueFileInDirectory(String fileName)
     {
-        File directory = new File("./src/images/");
+        File directory = new File("./src/imgs/");
 
         File[] dir_contents = directory.listFiles();
 
